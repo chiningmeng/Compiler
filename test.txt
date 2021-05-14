@@ -1,2 +1,9 @@
 while(i<j)i++;
-i++;
+i&&1;
+if(i<=9){
+i=i-1;
+i--;
+}else if(i>=7&&i!=7){
+j=i||k;
+j=x/y;
+}

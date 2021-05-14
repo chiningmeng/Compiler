@@ -25,6 +25,8 @@ public class OperatorToken extends Token{
         put("!",55);
         put("++",46);
         put("--",57);
+        put("|",58);
+        put("&",59);
     }};
 
     public OperatorToken(String sign) {

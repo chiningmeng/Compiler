@@ -11,10 +11,10 @@ public class Main {
         File f = new File("C:\\Users\\whc\\Desktop\\编译原理\\lexer\\test.txt");
         InputStream in = new FileInputStream(f);
         Lexer lexer = new Lexer(in);
-        for(int i=0;i<20;i++) {
+       while(true) {
             Token token = lexer.read();
             try{
-                System.out.println("<"+token.getText() + "," + token.getProperty()+">");
+                System.out.println("< "+token.getText() + " , " + token.getProperty()+" >");
             } catch (Exception e) {
                 break;
             }
