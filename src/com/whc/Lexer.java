@@ -4,15 +4,16 @@ package com.whc;
 import com.whc.Token.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 
 public class Lexer {
 
-    private Reader reader;
+    private InputStream reader;
     private static final int EMPTY = -1;
     private int lastChar = EMPTY;
 
-    public Lexer(Reader r){
+    public Lexer(InputStream r){
         reader = r;
     }
     private static boolean isLetter(int c){
@@ -23,8 +24,6 @@ public class Lexer {
     }
 
     private static boolean isSpace(int c){
-        if(0<=c && c <= ' ')
-            System.out.println(c);
         return 0<=c && c <= ' ';
     }
 
