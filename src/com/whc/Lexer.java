@@ -96,9 +96,7 @@ public class Lexer {
         } else {
             throw new IOException();
         }
-        if(c>=0){
-            ungetChar(c);
-        }
+
 
         return new Token() {
             @Override

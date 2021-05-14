@@ -18,7 +18,6 @@ public class IdToken extends Token{
 
     }
 
-
     @Override
     public int getSortCode() {
         return sortCode;
