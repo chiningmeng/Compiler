@@ -15,7 +15,7 @@ public class ParserTest {
         File f = new File("C:\\Users\\whc\\Desktop\\编译原理\\lexer\\ParserTest.txt");
         InputStream in = new FileInputStream(f);
         Parser parser = new Parser(new Lexer(in));
-        parser.expr();
+        parser.bool();
         parser.displayProductionSteps();
         System.out.println();
         parser.displayAnalyticSteps();
