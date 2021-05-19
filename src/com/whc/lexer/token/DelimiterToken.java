@@ -14,6 +14,7 @@ public class DelimiterToken extends Token{
        put("}",87);
        put("[",88);
        put("]",89);
+       put(",",90);
     }};
     public DelimiterToken(String sign,int lineIndex){
         super(lineIndex);
