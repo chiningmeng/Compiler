@@ -23,10 +23,10 @@ public class Parser {
         this.lexer = lexer;
     }
     /*
-    * expr -> term rest
-    * term -> unary rest
-    * rest -> + term rest | - term rest | ε
-    * rest -> * unary rest | / unary rest |ε
+    * expr -> term rest5
+    * term -> unary rest6
+    * rest5 -> + term rest5 | - term rest5 | ε
+    * rest6 -> * unary rest6 | / unary rest6 |ε
     * unary -> factor
     * factor -> num
     * */
@@ -42,96 +42,104 @@ public class Parser {
     }
 
     /*
-    * expr -> term rest
+    * expr -> term rest5
     * */
     public void expr(){
         this.read();
-        ProductionSteps.add("expr -> term rest");
+        ProductionSteps.add("expr -> term rest5");
 
         analyticStep.pollFirst();
-        analyticStep.addFirst("rest");
+        analyticStep.addFirst("rest5");
         analyticStep.addFirst("term");
         analyticSteps.add(assistance.toString()+analyticStep.toString());
 
         term();
-        rest();
+        rest5();
     }
 
     /*
-    * term -> unary rest
+    * term -> unary rest6
     * */
     public void term(){
-        ProductionSteps.add("term -> unary rest");
+        ProductionSteps.add("term -> unary rest6");
 
         analyticStep.pollFirst();
-        analyticStep.addFirst("rest");
+        analyticStep.addFirst("rest6");
         analyticStep.addFirst("unary");
         analyticSteps.add(assistance.toString()+analyticStep.toString());
 
         unary();
-        rest();
+        rest6();
     }
 
     /*
-    * rest -> + term rest | - term rest | ε
+    * rest5 -> + term rest5 | - term rest5 | ε
     * */
-    public void rest(){
-        if(token!=null && "+".equals(token.getText())){
-            ProductionSteps.add("rest -> + term rest");
+    public void rest5(){
+        if(token!=null && 41==token.getSortCode()){//"+".equals(token.getText())
+            ProductionSteps.add("rest5 -> + term rest5");
 
             analyticStep.pollFirst();
-            analyticStep.addFirst("rest");
+            analyticStep.addFirst("rest5");
             analyticStep.addFirst("term");
             assistance.add("+");
             analyticSteps.add(assistance.toString()+analyticStep.toString());
 
             this.read();
             term();
-            rest();
-        }else if(token!=null && "-".equals(token.getText())){
-            ProductionSteps.add("rest -> - term rest");
+            rest5();
+        }else if(token!=null && 42==token.getSortCode()){//"-".equals(token.getText())
+            ProductionSteps.add("rest5 -> - term rest5");
 
             analyticStep.pollFirst();
-            analyticStep.addFirst("rest");
+            analyticStep.addFirst("rest5");
             analyticStep.addFirst("term");
             assistance.add("-");
             analyticSteps.add(assistance.toString()+analyticStep.toString());
 
             this.read();
             term();
-            rest();
-        }else if(token!=null && "*".equals(token.getText())){
-            ProductionSteps.add("rest -> * term rest");
-
-            analyticStep.pollFirst();
-            analyticStep.addFirst("rest");
-            analyticStep.addFirst("term");
-            assistance.add("*");
-            analyticSteps.add(assistance.toString()+analyticStep.toString());
-
-            this.read();
-            term();
-            rest();
-        }else if(token!=null && "/".equals(token.getText())){
-            ProductionSteps.add("rest -> / term rest");
-
-            analyticStep.pollFirst();
-            analyticStep.addFirst("rest");
-            analyticStep.addFirst("term");
-            assistance.add("/");
-            analyticSteps.add(assistance.toString()+analyticStep.toString());
-
-            this.read();
-            term();
-            rest();
+            rest5();
         }else {
-            ProductionSteps.add("rest -> ε");
+            ProductionSteps.add("rest5 -> ε");
             analyticStep.pollFirst();
             analyticSteps.add(assistance.toString()+analyticStep.toString());
             return;
         }
     }
 
+    public void rest6(){
+        if(token!=null && 43==token.getSortCode()){//"*".equals(token.getText())
+            ProductionSteps.add("rest6 -> / term rest6");
+
+            analyticStep.pollFirst();
+            analyticStep.addFirst("rest6");
+            analyticStep.addFirst("unary");
+            assistance.add(token.getText());
+            analyticSteps.add(assistance.toString()+analyticStep.toString());
+
+            this.read();
+            unary();
+            rest6();
+        }else if(token!=null && 44==token.getSortCode()){//"/".equals(token.getText())
+            ProductionSteps.add("rest6 -> / term rest6");
+
+            analyticStep.pollFirst();
+            analyticStep.addFirst("rest6");
+            analyticStep.addFirst("unary");
+            assistance.add(token.getText());
+            analyticSteps.add(assistance.toString()+analyticStep.toString());
+
+            this.read();
+            unary();
+            rest6();
+        }else {
+            ProductionSteps.add("rest6 -> ε");
+            analyticStep.pollFirst();
+            analyticSteps.add(assistance.toString()+analyticStep.toString());
+            return;
+        }
+    }
     /*
     * unary -> factor
     * */
