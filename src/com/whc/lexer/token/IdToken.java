@@ -1,4 +1,4 @@
-package com.whc.Token;
+package com.whc.lexer.token;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,8 @@ public class IdToken extends Token{
        put("if",17);
        put("while",20);
     }};
-    public IdToken(String text) {
+    public IdToken(String text,int lineIndex) {
+        super(lineIndex);
         this.text = text;
         setSortCode(text);
 

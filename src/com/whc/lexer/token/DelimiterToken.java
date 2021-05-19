@@ -1,4 +1,4 @@
-package com.whc.Token;
+package com.whc.lexer.token;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,8 @@ public class DelimiterToken extends Token{
        put("[",88);
        put("]",89);
     }};
-    public DelimiterToken(String sign){
+    public DelimiterToken(String sign,int lineIndex){
+        super(lineIndex);
         this.sign = sign;
         sortCode = (int) map.get(sign);
         property = "-";

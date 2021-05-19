@@ -1,4 +1,4 @@
-package com.whc.Token;
+package com.whc.lexer.token;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,15 +29,10 @@ public class OperatorToken extends Token{
         put("&",59);
     }};
 
-    public OperatorToken(String sign) {
+    public OperatorToken(String sign,int lineIndex) {
+        super(lineIndex);
         this.sign = sign;
         sortCode = (int) map.get(sign);
-        property = "-";
-    }
-
-    public OperatorToken(int sort, String sign) {
-        this.sortCode = sort;
-        this.sign = sign;
         property = "-";
     }
 

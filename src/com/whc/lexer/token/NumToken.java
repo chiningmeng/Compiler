@@ -1,9 +1,10 @@
-package com.whc.Token;
+package com.whc.lexer.token;
 
 public class NumToken extends Token {
     private int value;
 
-    public NumToken(int value) {
+    public NumToken(int value,int lineINdex) {
+        super(lineINdex);
         this.value = value;
         this.sortCode = 100;
         this.property = String.valueOf(value);
