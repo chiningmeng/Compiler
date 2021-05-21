@@ -60,7 +60,8 @@ public class Lexer {
 
         if(c<0){
             //代码结尾
-            return null;        }else if(isDigit(c)){
+            return null;
+        }else if(isDigit(c)){
             do{ //识别数字
                 //[0-9][0-9]*
                 word.append((char)c);

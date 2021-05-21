@@ -9,11 +9,13 @@ import java.util.*;
 
 public class Parser {
     private Lexer lexer;
+    //每次读入的单词，语法分析器分析一个就读取更新一个
     private Token token;
+
     //产生式步骤
-    private List<String> productionSteps = new ArrayList<>();
+    private List<String> productionSteps = new LinkedList<>();
     //推导过程步骤，把assistance+analyticStep拼接后装入
-    private List<String> analyticSteps = new ArrayList<>();
+    private List<String> analyticSteps = new LinkedList<>();
     //非终结符
     private Deque<String> analyticStep = new LinkedList<>();
     //终结符
@@ -135,7 +137,7 @@ public class Parser {
 
     public void rest6() {
         if (token != null && 43 == token.getSortCode()) {//"*".equals(token.getText())
-            productionSteps.add("rest6 -> / term rest6");
+            productionSteps.add("rest6 -> * term rest6");
 
             analyticStep.pollFirst();
             analyticStep.addFirst("rest6");

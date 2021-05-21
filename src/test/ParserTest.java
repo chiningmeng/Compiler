@@ -18,7 +18,9 @@ public class ParserTest {
         parser.read();
         parser.stmts();
         parser.displayProductionSteps();
+
         System.out.println();
+
         parser.displayAnalyticSteps();
     }
 }
