@@ -106,23 +106,6 @@ public class Lexer {
             //以上单词均不能匹配，抛出异常
             throw new UnknownSymbolException(lineIndex,(char)c);
         }
-
-
-        return new Token(lineIndex) {
-            @Override
-            public int getSortCode() {
-                return 0;
-            }
-
-            @Override
-            public String getText() {
-                return null;
-            }
-
-            @Override
-            public String getProperty() {
-                return null;
-            }
-        };
+        return new Token(lineIndex);
     }
 }
