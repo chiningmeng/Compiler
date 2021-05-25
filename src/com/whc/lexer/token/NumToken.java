@@ -1,13 +1,14 @@
 package com.whc.lexer.token;
 
 public class NumToken extends Token {
-    private int value;
 
-    public NumToken(int value,int lineINdex) {
+    private double property;
+
+    public NumToken(Double value,int lineINdex) {
         super(lineINdex);
-        this.value = value;
+        this.text = Double.toString(value);
         this.sortCode = 100;
-        this.property = String.valueOf(value);
+        this.property = value;
     }
 
 
@@ -18,18 +19,13 @@ public class NumToken extends Token {
 
     @Override
     public String getText() {
-        return Integer.toString(value);
+        return text;
     }
 
-    @Override
-    public String getProperty() {
+    public double getProperty() {
         return property;
     }
 
-
-    public int getNumber() {
-        return value;
-    }
 }
 
 

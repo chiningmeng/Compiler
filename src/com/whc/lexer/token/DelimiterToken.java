@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DelimiterToken extends Token{
-    private String sign;
 
+    private String property;
     static Map map = new HashMap(){{
        put("(",81);
        put(")",82);
@@ -16,10 +16,10 @@ public class DelimiterToken extends Token{
        put("]",89);
        put(",",90);
     }};
-    public DelimiterToken(String sign,int lineIndex){
+    public DelimiterToken(String text, int lineIndex){
         super(lineIndex);
-        this.sign = sign;
-        sortCode = (int) map.get(sign);
+        this.text = text;
+        sortCode = (int) map.get(text);
         property = "-";
     }
     @Override
@@ -29,10 +29,10 @@ public class DelimiterToken extends Token{
 
     @Override
     public String getText() {
-        return sign;
+        return text;
     }
 
-    @Override
+
     public String getProperty() {
         return property;
     }

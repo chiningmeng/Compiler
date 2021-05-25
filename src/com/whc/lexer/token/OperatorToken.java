@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class OperatorToken extends Token{
 
-    private String sign;
+    private String property;
 
     static Map map = new HashMap(){{
         put("+",41);
@@ -29,10 +29,10 @@ public class OperatorToken extends Token{
         put("&",59);
     }};
 
-    public OperatorToken(String sign,int lineIndex) {
+    public OperatorToken(String text, int lineIndex) {
         super(lineIndex);
-        this.sign = sign;
-        sortCode = (int) map.get(sign);
+        this.text = text;
+        sortCode = (int) map.get(text);
         property = "-";
     }
 
@@ -43,17 +43,16 @@ public class OperatorToken extends Token{
 
     @Override
     public String getText() {
-        return sign;
+        return text;
     }
 
-    @Override
     public String getProperty() {
         return property;
     }
 
-    public static int isExist(String sign){
-        if(map.get(sign)!=null){
-            return (int) map.get(sign);
+    public static int isExist(String text){
+        if(map.get(text)!=null){
+            return (int) map.get(text);
         }else{
             return -1;
         }

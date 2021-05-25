@@ -68,7 +68,7 @@ public class Lexer {
                 c = getChar();
                 if(!isDigit(c)){
                     ungetChar(c);
-                    return new NumToken(Integer.valueOf(word.toString()),lineIndex);
+                    return new NumToken(Double.valueOf(word.toString()),lineIndex);
                 }
             }while (isDigit(c));
         }else if(isLetter(c)){

@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IdToken extends Token{
-    private String text;
 
+    private String property;
     private Map map = new HashMap(){{
        put("int",5);
        put("else",15);
@@ -16,7 +16,7 @@ public class IdToken extends Token{
         super(lineIndex);
         this.text = text;
         setSortCode(text);
-
+        property = text;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class IdToken extends Token{
         return text;
     }
 
-    @Override
+
     public String getProperty() {
         return property;
     }

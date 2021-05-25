@@ -1,9 +1,9 @@
 package com.whc.lexer.token;
 
 public class Token {
-
+    protected String text;
     protected int sortCode;
-    protected String property;
+//    protected String property;
     protected int lineIndex;
 
     public Token() {
@@ -21,9 +21,9 @@ public class Token {
         return null;
     }
 
-    public String getProperty() {
-        return null;
-    }
+//    public String getProperty() {
+//        return null;
+//    }
 
     public int getLineIndex() {
         return lineIndex;
