@@ -2,11 +2,11 @@ package com.whc.lexer.token;
 
 public class NumToken extends Token {
 
-    private double property;
+    private int property;
 
-    public NumToken(Double value,int lineINdex) {
+    public NumToken(Integer value,int lineINdex) {
         super(lineINdex);
-        this.text = Double.toString(value);
+        this.text = Integer.toString(value);
         this.sortCode = 100;
         this.property = value;
     }
