@@ -2,7 +2,6 @@ package com.whc.parser;
 
 import com.whc.exception.UnknownSymbolException;
 import com.whc.lexer.Lexer;
-import com.whc.lexer.token.NumToken;
 import com.whc.lexer.token.Token;
 
 import java.io.IOException;
@@ -748,7 +747,9 @@ public class Parser {
         analyticSteps.add(assistance.toString()+analyticStep.toString());
     }
     public void displayQuadruple(){
+        int i = 0;
         for(List<String> list :quadruple){
+            System.out.print(i++ +" : ");
             for(String str : list){
                 System.out.print(str+" ");
             }
